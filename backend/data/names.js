@@ -1,4 +1,4 @@
-export const NAMES = [
+const NAMES = [
     {
         number: 1,
         arabic: "ٱلرَّحْمَٰنُ",
@@ -693,3 +693,4 @@ export const NAMES = [
         reflection: " "
     }
 ]
+module.exports = { NAMES };

@@ -7,35 +7,39 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-// The 99 names — import the same data as your frontend
-const NAMES = require('../data/names');
+const { NAMES } = require('../data/names');
 
-// Runs every day at the top of every hour
-// You can make this smarter to check per-user preferred times
-cron.schedule('0 * * * *', async () => {
-  const currentHour = new Date().getUTCHours();
+// Every minute for testing — change to '0 7 * * *' for daily at 7am UTC
+cron.schedule('0 7 * * *', async () => {
+  console.log('Cron fired — checking for users to notify...');
 
-  // Fetch users whose preferred send time matches this hour
   const { data: users, error } = await supabase
     .from('users')
-    .select('*')
-    .eq('notify_time_hour', currentHour); // store just the hour for simplicity
+    .select('*');
 
-  if (error || !users) return;
+  if (error) {
+    console.log('Supabase error:', error.message);
+    return;
+  }
+
+  if (!users || users.length === 0) {
+    console.log('No users found in database');
+    return;
+  }
 
   for (const user of users) {
     const nextNameNumber = (user.last_name_sent % 99) + 1;
     const todaysName = NAMES.find(n => n.number === nextNameNumber);
 
-    // Send the email
+    console.log(`Sending name ${nextNameNumber} to ${user.email}`);
+
     await sendReminderEmail(user.email, todaysName);
 
-    // Update which name was last sent
     await supabase
       .from('users')
       .update({ last_name_sent: nextNameNumber })
       .eq('id', user.id);
   }
 
-  console.log(`Reminders sent at hour ${currentHour} UTC`);
+  console.log('Done sending reminders');
 });
