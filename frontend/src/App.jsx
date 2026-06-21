@@ -4,6 +4,7 @@ import ProgressGrid from './components/ProgressGrid'
 import './App.css'
 
 function App() {
+  <img src="/public/The Noor Corner.png" alt="The Noor Corner" style={{ width: '120px', marginBottom: '16px' }} />
   const [showProgress, setShowProgress] = useState(false)
 
   // Track which names have been seen based on days passed

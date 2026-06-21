@@ -1,0 +1,19 @@
+the aim of this project is to help me grow closer to Allah swt, our creator.
+to love Allah is to know Allah, and to know Allah is to know his names.
+i dont know his names by heart so that quote spoke volumes to me
+i sat thinking i wish there was an app that could send reminders each day or week of one attribute of allah, to help reflect throughout the day
+most apps would have premium versions or something complicated
+my initiative was to build something for myself and inshaa allaah for others to use as well
+
+started with the help of claude ai to draw a spec of instructions on how to build this application
+
+techstack used:
+
+- react frontend
+- node.js backend
+- supabase database
+- resend emails
+- render to deploy backend
+
+the core mechanism is the node-cron scheduler that runs on my server at a set time each day
+it looks up the next name in the sequence and fires off an email with the arabix, transliteration, meaning and soon the reflection
