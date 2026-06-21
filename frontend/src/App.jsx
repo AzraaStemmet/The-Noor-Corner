@@ -4,15 +4,11 @@ import ProgressGrid from './components/ProgressGrid'
 import './App.css'
 
 function App() {
-  <img src="/public/The Noor Corner.png" alt="The Noor Corner" style={{ width: '120px', marginBottom: '16px' }} />
   const [showProgress, setShowProgress] = useState(false)
 
-  // Track which names have been seen based on days passed
   const dayOfYear = Math.floor(
     (Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000
   )
-  
-  // All name numbers up to today are considered "seen"
   const seenNumbers = Array.from({ length: dayOfYear % 99 }, (_, i) => i + 1)
 
   return (
@@ -26,7 +22,13 @@ function App() {
       alignItems: 'center',
       padding: '40px 20px'
     }}>
-      
+
+      <img 
+        src="/The Noor Corner.png" 
+        alt="The Noor Corner" 
+        style={{ width: '120px', marginBottom: '16px' }} 
+      />
+
       <h1 style={{ 
         color: '#c9a84c', 
         fontSize: '1.2rem', 
@@ -69,7 +71,6 @@ function App() {
           <ProgressGrid seenNumbers={seenNumbers} />
         </div>
       )}
-
     </div>
   )
 }
