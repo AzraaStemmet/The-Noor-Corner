@@ -14,8 +14,8 @@ function App() {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      backgroundColor: '#0f1f0f',
-      color: '#f5f0e8',
+      backgroundColor: '#f4ece0',
+      color: '#a03060',
       fontFamily: 'Georgia, serif',
       display: 'flex',
       flexDirection: 'column',
@@ -30,7 +30,7 @@ function App() {
       />
 
       <h1 style={{ 
-        color: '#c9a84c', 
+        color: '#a03060', 
         fontSize: '1.2rem', 
         letterSpacing: '3px',
         textTransform: 'uppercase',
@@ -40,7 +40,7 @@ function App() {
       </h1>
 
       <p style={{ 
-        color: '#7a9e7a', 
+        color: '#7a8a9e', 
         fontSize: '0.9rem',
         marginBottom: '48px'
       }}>
